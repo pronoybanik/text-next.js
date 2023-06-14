@@ -1,9 +1,14 @@
-import Image from 'next/image'
+import Header from './component/Home/Header/Header'
+import ProductItem from './component/Home/products/page'
+import MenProduct from './component/MenProduct/MenProduct'
+
 
 export default function Home() {
   return (
-    <div className='text-3xl text-center uppercase'>
-      testing page is success
+    <div>
+      <Header />
+      <MenProduct />
+      <ProductItem />
     </div>
   )
 }

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import LogIn from '../login/page';
 import { useForm } from 'react-hook-form';
-import { AuthContext } from '@/app/share/AuthProvider';
+import { AuthContext } from '@/app/component/AuthProvider/AuthProvider';
 import { useRouter } from 'next/navigation';
 
 

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { AuthContext, useAuth } from './AuthProvider';
+import { AuthContext, useAuth } from '../component/AuthProvider/AuthProvider';
 import { useRouter } from 'next/navigation';
 
 const PrivateRoute = (Component) => {

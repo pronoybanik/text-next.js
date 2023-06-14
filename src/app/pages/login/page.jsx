@@ -1,5 +1,6 @@
 'use client'
-import { AuthContext } from '@/app/share/AuthProvider';
+import { AuthContext } from '@/app/component/AuthProvider/AuthProvider';
+// import { AuthContext } from '@/app/component/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -25,8 +26,6 @@ const LogIn = () => {
 
 
     
-
-
     const provider = new GoogleAuthProvider();
     const handleGoogle = () => {
         googleLogin(provider)

@@ -1,7 +1,7 @@
 "use client"
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
-import app from '../utils/Firebase/Firebase.config';
+import app from '../../utils/Firebase/Firebase.config';
 
 
 export const AuthContext = createContext();

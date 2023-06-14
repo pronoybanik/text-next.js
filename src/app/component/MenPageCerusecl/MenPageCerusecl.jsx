@@ -23,13 +23,11 @@ const MenPageCerusecl = () => {
                         640: { perPage: 1 },
                     },
                 }}>
-
-
                     {data.slice(1, 7).map(item => {
                         return (
-                            <div key={item.id}>
-                                <SplideSlide  >
-                                    <Link href="/pages/men/productdetails" className="block ml-1 group motion-safe:hover:scale-110">
+                            <>
+                                <SplideSlide>
+                                    <Link key={item.id} href="/pages/men/productdetails" className="block ml-1 group motion-safe:hover:scale-110">
                                         <Image width={500} height={500}
                                             src={item.url}
                                             alt=""
@@ -37,7 +35,7 @@ const MenPageCerusecl = () => {
                                         />
                                     </Link>
                                 </SplideSlide>
-                            </div>
+                            </>
 
 
 
@@ -66,9 +64,9 @@ const MenPageCerusecl = () => {
 
                     {data.slice(7, 13).map(item => {
                         return (
-                            <div key={item.id}>
+                            <>
                                 <SplideSlide  >
-                                    <Link href="/pages/men/productdetails" className="block group motion-safe:hover:scale-110">
+                                    <Link key={item.id} href="/pages/men/productdetails" className="block group motion-safe:hover:scale-110">
                                         <Image width={500} height={500}
                                             src={item.url}
                                             alt=""
@@ -76,7 +74,7 @@ const MenPageCerusecl = () => {
                                         />
                                     </Link>
                                 </SplideSlide>
-                            </div>
+                            </>
 
 
 

@@ -3,43 +3,18 @@ import { Fragment, useContext } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
-import { AuthContext } from '@/app/share/AuthProvider'
+import { AuthContext } from '@/app/component/AuthProvider/AuthProvider'
 
 
 const navigation = [
-    { name: 'Dashboard', href: '#', current: true },
-    { name: 'Team', href: '#', current: false },
-    { name: 'Projects', href: '#', current: false },
-    { name: 'Calendar', href: '#', current: false },
+    { name: 'Home', href: '/', current: true },
+    { name: 'Men', href: '/pages/men', current: false },
+    { name: 'women', href: '/pages/women', current: false },
+    { name: 'register', href: '/pages/register', current: false },
+    { name: 'login', href: '/pages/login', current: false },
 ]
 
-const lists = [
-    {
-        id: 1,
-        title: 'Home',
-        url: '/'
-    },
-    {
-        id: 2,
-        title: 'Men',
-        url: '/pages/men'
-    },
-    {
-        id: 3,
-        title: 'women',
-        url: '/pages/women'
-    },
-    {
-        id: 4,
-        title: 'register',
-        url: '/pages/register'
-    },
-    {
-        id: 5,
-        title: 'login',
-        url: '/pages/login'
-    },
-]
+
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -47,13 +22,13 @@ function classNames(...classes) {
 
 export default function Example() {
     const { user, logOut } = useContext(AuthContext);
-    
+
     const handleLogOut = () => {
         logOut()
     };
 
     return (
-        <Disclosure as="nav" className="bg-black z-50">
+        <Disclosure as="nav" className="bg-gray-100 sticky top-0 z-50 ">
             {({ open }) => (
                 <>
                     <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -69,53 +44,77 @@ export default function Example() {
                                     )}
                                 </Disclosure.Button>
                             </div>
-                            <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                                <div className="flex flex-shrink-0 items-center">
-                                    <h1 className='uppercase text-5xl text-white font-bold mr-10'> ajio</h1>
-
+                            <div className="flex flex-1 sm:items-stretch sm:justify-start">
+                                <div className="flex  flex-shrink-0 items-center">
+                                    <h1 className='lg:text-5xl ml-12 text-3xl uppercase font-serif '>ajio </h1>
                                 </div>
-                                <div className="hidden sm:ml-6 sm:block">
-                                    <div className="flex space-x-4">
+                                <div className="hidden sm:ml-6  sm:block ">
+                                    <div className="flex ml-80 mt-2 space-x-4">
+                                        {navigation.map(list => <Link key={list.id} href={list.href}
 
-
-                                        {lists.map(list => <Link key={list.id} href={list.url}
-
-                                            className={classNames(
-                                                list.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                                'rounded-md px-3 py-2 text-sm font-medium'
-                                            )}
+                                            className='hover:text-black hover:font-bold mt-2 '
                                             aria-current={list.current ? 'page' : undefined}
-                                        >{list?.title}</Link>)}
+                                        >{list?.name}</Link>)}
+
+                                        <div>
+                                            {
+                                                user?.email &&
+                                                <button onClick={handleLogOut} className=' border p-2 rounded-3xl font-medium border-black hover:bg-red-500 hover:text-white'>logout</button>
+
+                                            }
+                                        </div>
 
 
-                                        {
-                                            user?.email && <button
-                                                onClick={handleLogOut}
-                                                className="group relative inline-block text-sm font-medium text-white focus:outline-none focus:ring"
+                                        <div>
 
-                                            >
-                                                <span
-                                                    className="absolute inset-0 border border-red-600 group-active:border-red-500"
-                                                ></span>
-                                                <span
-                                                    className="block border border-red-600 bg-red-600 px-12 py-3 transition-transform active:border-red-500 active:bg-red-500 group-hover:-translate-x-1 group-hover:-translate-y-1"
-                                                >
-                                                    log out
-                                                </span>
-                                            </button>
-                                        }
+                                            <div class="relative ">
+
+                                                <input
+                                                    type="email"
+                                                    id="UserEmail"
+                                                    placeholder="search ajio"
+                                                    class="w-full rounded-full border-black border  text-black p-2 bg-yellow-200 shadow-sm sm:text-sm"
+                                                />
 
 
+                                            </div>
+                                        </div>
                                     </div>
+
                                 </div>
                             </div>
-
                         </div>
                     </div>
 
+                    <Disclosure.Panel className="sm:hidden">
+                        <div className="space-y-1 px-2 pb-3 pt-2">
+                            {navigation.map((item) => (
+                                <Disclosure.Button
+                                    key={item.name}
+                                    as="a"
+                                    href={item.href}
+                                    className={classNames(
+                                        item.current ? 'bg-gray-900 text-white' : 'hover:text-black hover:font-bold mt-2  block '
+                                    )}
+                                    aria-current={item.current ? 'page' : undefined}
+                                >
+                                    {item.name}
+                                </Disclosure.Button>
+                            ))}
+                            <div>
+                                {
+                                    user?.email &&
+                                    <button onClick={handleLogOut} className=' border p-2 mt-1 -ml-1 rounded-3xl font-medium border-black hover:bg-red-500 hover:text-white'>logout</button>
 
+                                }
+                            </div>
+                        </div>
+                    </Disclosure.Panel>
                 </>
             )}
         </Disclosure>
     )
 }
+
+
+
